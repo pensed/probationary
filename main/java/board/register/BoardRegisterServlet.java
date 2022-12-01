@@ -16,12 +16,6 @@ import board.list.BoardListVO;
 public class BoardRegisterServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException {
-		doHandle(request, response);
-	}
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
@@ -31,6 +25,8 @@ public class BoardRegisterServlet extends HttpServlet {
 	
 	private void doHandle(HttpServletRequest request,HttpServletResponse response)  
 	throws ServletException, IOException {
+		
+		System.out.println("BoardRegisterDAO 사용하기");
 		
 		request.setCharacterEncoding("utf-8");
 	    response.setContentType("text/html;charset=utf-8");
@@ -50,31 +46,6 @@ public class BoardRegisterServlet extends HttpServlet {
 			 				vo.setIs_private(is_private);
 		   dao.addBoard(vo);
 	    }
-	    //
-	    PrintWriter outt = response.getWriter();
-		BoardListDAO daoo = new BoardListDAO();
-		List<BoardListVO> list = daoo.listBoard();
-		
-			outt.print("<html><body>");
-			outt.print("<table board=1><tr>게시판</tr><tr align='center' bgcolor='lightgray'>");
-			outt.print ("<td>번호</td><td>장성자</td><td>제목</td><td>작성일</td><td>조회수</td></tr>");
-			
-			for(int i=0;i<list.size(); i++) {
-				BoardListVO boardlistVO = (BoardListVO) list.get(i);
-				
-				int num 		= boardlistVO.getNum();
-				String writer 	= boardlistVO.getWriter();
-				String title 	= boardlistVO.getTitle();
-				Date date 		= boardlistVO.getDate();
-				int cnt 		= boardlistVO.getCnt();
-				
-				outt.print("<tr><td>" + num + "</td><td>" 
-									  + writer + "</td><td>" 
-									  + title + "</td><td>" 
-									  + date + "</td><td>" 
-									  + cnt + "</td></tr>");
-			}
-			outt.print("</table></body></html>");   
-	   
+	    System.out.println("BoardListVO 보내기 성공");
 	}
 }
