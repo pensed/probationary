@@ -10,16 +10,6 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-	<!-- 게시글 목록 -->
-	<servlet>
-		<servlet-name>boardlist</servlet-name>
-		<servlet-class>board.list.BoardListServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-		<servlet-name>boardlist</servlet-name>
-		<url-pattern>/list</url-pattern>
-	</servlet-mapping>
-
 	<!-- 게시글 작성 -->
 	<servlet>
 		<servlet-name>boardregister</servlet-name>
@@ -30,4 +20,6 @@
 		<url-pattern>/boardregister</url-pattern>
 	</servlet-mapping>
 	
+	
+
 </web-app>

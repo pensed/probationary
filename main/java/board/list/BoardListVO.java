@@ -8,9 +8,27 @@ public class BoardListVO {
 	private String title;
 	private Date date;
 	private int cnt;
+	private int startPage;
+	private int endPage;
 	
+	public int getStartPage() {
+		return startPage;
+	}
+
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+
+	public int getEndPage() {
+		return endPage;
+	}
+
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+
 	public BoardListVO() {
-		System.out.println("BoardListVO 불러오기 성공");
+		System.out.println("*");
 	}
 
 	public int getNum() {

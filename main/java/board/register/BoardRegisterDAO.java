@@ -12,9 +12,8 @@ public class BoardRegisterDAO {
 
 	public int getNextNum() {
 		int num = 0;
+		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
 		try {
-			
-			
 			Connection con = DBUtil.getConnection();
 			String query = "SELECT max(num)+1 AS num "
 						 + "FROM board ";
@@ -34,8 +33,8 @@ public class BoardRegisterDAO {
 	}
 	public void addBoard(BoardRegisterVO boardRegisterVO)
 	{
+		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
 		try {
-	
 			Connection con = DBUtil.getConnection();
 			
 			int num 	  		= getNextNum();
