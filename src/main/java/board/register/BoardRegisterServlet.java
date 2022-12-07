@@ -33,12 +33,12 @@ public class BoardRegisterServlet extends HttpServlet {
 	    BoardRegisterDAO dao=new BoardRegisterDAO();
 	    String command=request.getParameter("command");
 	      
-	    if(command!= null && command.equals("addMember")){
+	    if(command!= null && command.equals("addBoard")){
 	    	String writer	  =request.getParameter("writer");
 			String title	  =request.getParameter("title");
 			String content	  =request.getParameter("content");
-			String is_private=request.getParameter("input_check");
-			 
+			String is_private=request.getParameter("input_check").toUpperCase();
+			System.out.println(is_private); 
 			BoardRegisterVO vo=new BoardRegisterVO();
 			 				vo.setWriter(writer);
 			 				vo.setTitle(title);
