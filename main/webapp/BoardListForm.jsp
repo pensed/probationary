@@ -4,7 +4,7 @@
 <%
 // List<BoardListVO> boardList = (List)request.getAttribute("boardList");
 // System.out.println(boardList);
-  List<BoardListVO> boardList = BoardListDAO.listBoard();
+  List<BoardListVO> boardList = BoardListDAO.listBoard(1);
 
 %>
 

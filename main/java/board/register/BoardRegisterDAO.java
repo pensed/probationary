@@ -59,7 +59,6 @@ public class BoardRegisterDAO {
 			pstmt.close();
 			con.close();
 			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} 

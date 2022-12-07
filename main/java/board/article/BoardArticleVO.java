@@ -1,5 +1,7 @@
 package board.article;
 
+import java.sql.Date;
+
 public class BoardArticleVO {
 	
 	private int num;
@@ -7,6 +9,7 @@ public class BoardArticleVO {
 	private String title;
 	private String content;
 	private String is_private;
+	private Date date;
 	
 	public int getNum() {
 		return num;
@@ -14,7 +17,7 @@ public class BoardArticleVO {
 	public void setNum(int num) {
 		this.num = num;
 	}
-	public String getWirter() {
+	public String getWriter() {
 		return writer;
 	}
 	public void setWriter(String writer) {
@@ -38,6 +41,11 @@ public class BoardArticleVO {
 	public void setIs_private(String is_private) {
 		this.is_private = is_private;
 	}
-	
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
 	
 }
