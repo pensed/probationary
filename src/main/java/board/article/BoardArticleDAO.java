@@ -64,7 +64,7 @@ public class BoardArticleDAO {
 			e.printStackTrace();
 		} 
 	}
-	
+
 	public static List<BoardArticleVO> readArticle(int num) {
 		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
 		List<BoardArticleVO> list = new ArrayList<>();
@@ -75,6 +75,9 @@ public class BoardArticleDAO {
 						+ "is_private "
 					  + "FROM board "
 					  + "WHERE num = ?";
+		//게시글 조회수 추가 쿼리
+		String increasequery = "UPDATE board SET cnt = cnt+1 WHERE num= ?";
+				
 		System.out.println("PreparedStatement:" + query);
 		try {
 			Connection con = DBUtil.getConnection();
@@ -82,7 +85,6 @@ public class BoardArticleDAO {
 			pstmt.setInt(1, num);
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.executeQuery();
-			
 			while(rs.next()) {
 				String writer     = rs.getString("writer");
 				String title      = rs.getString("title");
@@ -96,7 +98,13 @@ public class BoardArticleDAO {
 				vo.setContent(content);
 				vo.setIs_private(is_private);
 				list.add(vo);
+				
 			}
+			//게시글 조회수 추가
+			pstmt = con.prepareCall(increasequery);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+			
 			pstmt.close();
 			con.close();
 			System.out.println("done");
