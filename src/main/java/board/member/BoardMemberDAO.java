@@ -9,7 +9,7 @@ import javax.servlet.http.Cookie;
 import board.db.DBUtil;
 
 public class BoardMemberDAO {
-	public static boolean isExisted(BoardMemberVO memberVO) {
+	public boolean isExisted(BoardMemberVO memberVO) {
 		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
 		memberVO.setRememberId(false);
 		String id = memberVO.getId();

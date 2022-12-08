@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>pro07</display-name>
+  <display-name>onlylist</display-name>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -10,16 +10,25 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 
-	<!-- 게시글 작성 -->
+	<servlet>
+		<servlet-name>boardmember</servlet-name>
+		<servlet-class>board.member.BoardMemberServlet</servlet-class>
+	</servlet>
+
 	<servlet>
 		<servlet-name>boardregister</servlet-name>
 		<servlet-class>board.register.BoardRegisterServlet</servlet-class>
 	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>boardmember</servlet-name>
+		<url-pattern>/boardmember</url-pattern>
+	</servlet-mapping>
+	
 	<servlet-mapping>
 		<servlet-name>boardregister</servlet-name>
 		<url-pattern>/boardregister</url-pattern>
 	</servlet-mapping>
-	
 	
 
 </web-app>

@@ -14,7 +14,7 @@ class MemberDAOTest {
 		member.setId("kim");
 		member.setPwd("1234");
 		
-		System.out.println(BoardMemberDAO.isExisted(member));
+		//System.out.println(BoardMemberDAO.isExisted(member));
 	}
 
 }
