@@ -67,7 +67,7 @@ class TestListDao {
 		
 		System.out.println("Input board num: ");
 		
-		afterBoard = BoardArticleDAO.readArticle(BoardArticleDAO.getNextNum());
+		afterBoard = BoardArticleDAO.readArticle(Integer.toString(BoardArticleDAO.getNextNum()));
 		for(BoardArticleVO vo : afterBoard) {
 			System.out.println("작성자: " + vo.getWriter());
 			System.out.println("공개여부: " + vo.getIs_private());

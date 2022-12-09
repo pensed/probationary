@@ -20,7 +20,7 @@
 	<body>
 		<tr>
 			<td colspan="6" align="right">
-				<input type="button" value="글작성" onclick="location.href='BoardRegisterForm.html'">
+				<input type="button" value="글작성" onclick="location.href='BoardRegisterForm.jsp'">
 			</td>
 		</tr>
 		<table board=1>
@@ -35,7 +35,7 @@
 			<tr>
 				<td><%=boardList.get(i).getNum() %></td>
 				<td><%=boardList.get(i).getWriter() %></td>
-				<td><a href="BoardDetailForm.jsp?num=<%=boardList.get(i).getNum()%>"><%=boardList.get(i).getTitle()%></a></td>
+				<td><a href="BoardArticleForm.jsp?num=<%=boardList.get(i).getNum()%>"><%=boardList.get(i).getTitle()%></a></td>
 				<td><%=boardList.get(i).getDate() %></td>
 				<td><%=boardList.get(i).getCnt() %></td>
 			</tr>

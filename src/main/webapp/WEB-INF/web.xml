@@ -20,6 +20,11 @@
 		<servlet-class>board.register.BoardRegisterServlet</servlet-class>
 	</servlet>
 	
+	<servlet>
+		<servlet-name>boardupdate</servlet-name>
+		<servlet-class>board.update.BoardUpdateServlet</servlet-class>
+	</servlet>
+	
 	<servlet-mapping>
 		<servlet-name>boardmember</servlet-name>
 		<url-pattern>/boardmember</url-pattern>
@@ -28,6 +33,11 @@
 	<servlet-mapping>
 		<servlet-name>boardregister</servlet-name>
 		<url-pattern>/boardregister</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>boardupdate</servlet-name>
+		<url-pattern>/boardupdate</url-pattern>
 	</servlet-mapping>
 	
 

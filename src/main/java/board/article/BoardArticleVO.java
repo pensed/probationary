@@ -4,17 +4,17 @@ import java.sql.Date;
 
 public class BoardArticleVO {
 	
-	private int num;
+	private String num;
 	private String writer;
 	private String title;
 	private String content;
 	private String is_private;
 	private Date date;
 	
-	public int getNum() {
+	public String getNum() {
 		return num;
 	}
-	public void setNum(int num) {
+	public void setNum(String num) {
 		this.num = num;
 	}
 	public String getWriter() {

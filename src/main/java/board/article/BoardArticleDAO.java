@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import board.db.DBUtil;
+import board.register.BoardRegisterVO;
 
 public class BoardArticleDAO {
 
@@ -65,7 +66,7 @@ public class BoardArticleDAO {
 		} 
 	}
 
-	public static List<BoardArticleVO> readArticle(int num) {
+	public static List<BoardArticleVO> readArticle(String num) {
 		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
 		List<BoardArticleVO> list = new ArrayList<>();
 		String query = 	"SELECT "
@@ -82,7 +83,7 @@ public class BoardArticleDAO {
 		try {
 			Connection con = DBUtil.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, num);
+			pstmt.setString(1, num);
 			pstmt.executeUpdate();
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -102,7 +103,7 @@ public class BoardArticleDAO {
 			}
 			//게시글 조회수 추가
 			pstmt = con.prepareCall(increasequery);
-			pstmt.setInt(1, num);
+			pstmt.setString(1, num);
 			pstmt.executeUpdate();
 			
 			pstmt.close();
@@ -120,7 +121,7 @@ public class BoardArticleDAO {
 		try {
 			Connection con = DBUtil.getConnection();
 			
-			int num 	  		= boardArticleVO.getNum();
+			String num 	  		= boardArticleVO.getNum();
 			String title 		= boardArticleVO.getTitle();
 			String content 		= boardArticleVO.getContent();
 			String is_private 	= boardArticleVO.getIs_private();
@@ -133,15 +134,14 @@ public class BoardArticleDAO {
 				   		 		+ "WHERE num = ? ";
 			
 			System.out.println("prepareStatememt: " + query);
-			
+			System.out.println(num + ", " + title);
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
 			pstmt.setString(3, is_private);
-			pstmt.setInt(4, num);
+			pstmt.setString(4, num);
 			pstmt.executeUpdate();
-			con.rollback();
 			pstmt.close();
 			con.close();
 			
@@ -150,19 +150,18 @@ public class BoardArticleDAO {
 		} 
 	}
 		
-	public void deleteArticle(BoardArticleVO boardArticleVO) {
+	public static void deleteArticle(String num) {
 		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 //			con.setAutoCommit(false);
-			int num 	 = boardArticleVO.getNum();
 			String query = "DELETE FROM board "
 						 + "WHERE num = ? ";
 			
-			System.out.println("prepareStatememt: " + query);
+			System.out.println("prepareStatememt: " + query + num);
 			PreparedStatement pstmt = con.prepareStatement(query);
-		
-			pstmt.setInt(1, num);
+			
+			pstmt.setString(1, num);
 			pstmt.executeUpdate();
 //			con.setAutoCommit(true);
 			
