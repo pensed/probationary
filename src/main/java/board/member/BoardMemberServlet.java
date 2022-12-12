@@ -13,10 +13,10 @@ public class BoardMemberServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
-	throws ServletException, IOException {
-	}
+//	@Override
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+//	throws ServletException, IOException {
+//	}
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException {
@@ -40,8 +40,8 @@ public class BoardMemberServlet extends HttpServlet {
 		if (result) {		
 			HttpSession session = request.getSession();
 			session.setAttribute("isLogon", true);
-			session.setAttribute("login.id", user_id);
-			session.setAttribute("login.pwd", user_pwd);
+			session.setAttribute("id", user_id);
+			session.setAttribute("pwd", user_pwd);
 			response.sendRedirect("BoardListForm.jsp");
 		} else {			
 			response.sendRedirect("BoardLoginForm.jsp");
