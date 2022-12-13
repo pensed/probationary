@@ -14,7 +14,7 @@ public class BoardArticleDAO {
 
 	public static int getNextNum() {
 		int num = 0;
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 			String query = "SELECT max(num)+1 AS num "
@@ -35,7 +35,7 @@ public class BoardArticleDAO {
 	}
 	
 	public void createArticle(BoardArticleVO boardArticleVO) {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 			
@@ -67,7 +67,7 @@ public class BoardArticleDAO {
 	}
 	
 	public static void addCnt(String num) {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		String query = "UPDATE board SET cnt = cnt+1 WHERE num= ?";
 		try {
 			Connection con = DBUtil.getConnection();
@@ -84,7 +84,7 @@ public class BoardArticleDAO {
 	}
 	
 	public static BoardArticleVO readArticle(String num) {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		List<BoardArticleVO> list = new ArrayList<>();
 		String query = 	"SELECT "
 						+ "writer, "
@@ -129,10 +129,10 @@ public class BoardArticleDAO {
 	}
 		
 	public void updateArticle(BoardArticleVO boardArticleVO) {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
-			
+//			con.setAutoCommit(false);
 			String num 	  		= boardArticleVO.getNum();
 			String title 		= boardArticleVO.getTitle();
 			String content 		= boardArticleVO.getContent();
@@ -144,8 +144,8 @@ public class BoardArticleDAO {
 				   		 			+ "modify_day = SYSDATE, "
 				   		 			+ "is_private = ? "
 				   		 		+ "WHERE num = ? ";
-			System.out.println("prepareStatememt: " + query);
-			System.out.println(num + ", " + title);
+//			System.out.println("prepareStatememt: " + query);
+//			System.out.println(num + ", " + title);
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, title);
@@ -162,7 +162,7 @@ public class BoardArticleDAO {
 	}
 		
 	public static void deleteArticle(String num) {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 //			con.setAutoCommit(false);

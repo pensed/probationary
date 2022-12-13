@@ -12,7 +12,7 @@ class TestArticleDao {
 	
 	@BeforeAll
 	void beforeAll() {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY,"Y");
+		System.setProperty(DBUtil.DB_DIRECT_USED_KEY,"Y");
 	}
 	
 	@AfterEach

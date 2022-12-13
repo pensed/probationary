@@ -10,7 +10,7 @@ import board.db.DBUtil;
 
 public class BoardMemberDAO {
 	public boolean isExisted(BoardMemberVO memberVO) {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		memberVO.setRememberId(false);
 		String id = memberVO.getId();
 		String pwd = memberVO.getPwd();

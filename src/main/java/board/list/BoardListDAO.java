@@ -13,7 +13,7 @@ import board.db.DBUtil;
 public class BoardListDAO {
 	public static int getTotal() {
 		int result = -1;
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		String query = "SELECT COUNT(*) as total"
 					 + " FROM board";
 		try ( Connection con = DBUtil.getConnection();

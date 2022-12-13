@@ -24,7 +24,7 @@ class TestListDao {
 	
 	@BeforeAll
 	void beforeAll() {
-		System.setProperty(DBUtil.DB_DRIECT_USED_KEY, "Y");
+		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 	}
 
 	@Test	//페이지수 보기

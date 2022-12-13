@@ -12,7 +12,6 @@
   List<BoardListVO> boardList = BoardListDAO.listBoard(currentPage);
   Date dt = new Date();
   SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
-  System.out.println(sf.format(dt).compareTo(sf.format(boardList.get(9).getDate())));
 %>
 
 <!DOCTYPE html>
