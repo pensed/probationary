@@ -38,7 +38,8 @@ public class BoardListDAO {
 						 + "title, "
 						 + "create_day, "
 						 + "modify_day, "
-						 + "cnt "
+						 + "cnt, "
+						 + "is_private "
 					   + "FROM board "
 					   + "ORDER BY num DESC "
 					   + "OFFSET ? ROWS FETCH FIRST 10 ROWS ONLY ";
@@ -55,14 +56,14 @@ public class BoardListDAO {
 				String writer     = rs.getString("writer");
 				String title      = rs.getString("title");
 				Date createDate   = rs.getDate("create_day");
-				int cnt 		  = rs.getInt("cnt");
 				Date modiftydDate = rs.getDate("modify_day");
+				int cnt 		  = rs.getInt("cnt");
+				String is_private = rs.getString("is_private");
 				
 				BoardListVO vo = new BoardListVO();
 				vo.setNum(num);
 				vo.setWriter(writer);
 				vo.setTitle(title);
-				
 				if(Objects.nonNull(createDate) && Objects.nonNull(modiftydDate)) {
 					if( modiftydDate.getTime() - createDate.getTime() > 0) {
 						vo.setDate(modiftydDate);
@@ -75,6 +76,7 @@ public class BoardListDAO {
 					vo.setDate(createDate);
 				}
 				vo.setCnt(cnt);
+				vo.setIs_private(is_private);
 				list.add(vo);
 			}
 			pstmt.close();

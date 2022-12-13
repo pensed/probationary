@@ -10,6 +10,7 @@ public class BoardListVO {
 	private int cnt;
 	private int startPage;
 	private int endPage;
+	private String is_private;
 	
 	public int getStartPage() {
 		return startPage;
@@ -28,7 +29,6 @@ public class BoardListVO {
 	}
 
 	public BoardListVO() {
-		System.out.println("*");
 	}
 
 	public int getNum() {
@@ -71,4 +71,11 @@ public class BoardListVO {
 		this.cnt = cnt;
 	}
 	
+	public String getIs_private() {
+		return is_private;
+	}
+	
+	public void setIs_private(String is_private) {
+		this.is_private = is_private;
+	}
 }

@@ -8,7 +8,13 @@
 	}
 	String num = request.getParameter("num");
 	BoardArticleDAO boardArticle = new BoardArticleDAO();
-	boardArticle.deleteArticle(num);
+	BoardArticleVO board = boardArticle.readArticle(num);	
+	if(Objects.equals(board.getWriter(),session.getAttribute("user_id")) || Objects.equals(session.getAttribute("user_id"), "admin")){
+		boardArticle.deleteArticle(num);	
+	} else {
+		out.println("<script>alert('작성자 혹은 관리자가 아닙니다.'); history.back();</script>");
+	}
+	
 
 %>
 <script>

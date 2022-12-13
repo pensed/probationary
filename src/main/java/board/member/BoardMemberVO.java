@@ -6,7 +6,6 @@ public class BoardMemberVO {
 	private boolean rememberId;
 	
 	public BoardMemberVO() {
-		System.out.println("*");
 	}
 	
 	public BoardMemberVO(String id, String pwd, boolean rememberId) {

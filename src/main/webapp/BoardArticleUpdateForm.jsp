@@ -2,7 +2,12 @@
 <%@page import= "board.article.*" %>
 <%@page import="java.util.*" %>
 <%
-	int num = Integer.parseInt(request.getParameter("num"));
+	String num = request.getParameter("num");
+	BoardArticleDAO boardArticle = new BoardArticleDAO();
+	BoardArticleVO board = boardArticle.readArticle(num);	
+	if(!Objects.equals(board.getWriter(),session.getAttribute("user_id"))){
+			out.println("<script>alert('작성자가 아닙니다.'); history.back();</script>");
+	}
 %>
 <!DOCTYPE html>
 <html>
@@ -43,14 +48,14 @@
 				<th>게시글 수정</th>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" id='writer' name="writer" size="30" /> 공개여부 
+					<td><input type="text" id='writer' name="writer" size="30" value="<%=session.getAttribute("user_id")%>" readonly/> 비공개 
 						<input type="checkbox" name="input_check" value="Y" id="input_check" />
-						<input type="hidden" name="input_check" value="N" id="input_check_hidden" /> 비공개 글로 설정
+						<input type="hidden" name="input_check" value="N" id="input_check_hidden" />
 						<input type="hidden" name="num" value="<%=num %>"  id="input_check_hidden" /> 
 				</tr>
 				<tr>
 					<td>번호</td>
-					<td><input type="text" id='boardNum' name="boardNum" value="<%=num %>" disabled/></td>	
+					<td><input type="text" id='boardNum' name="boardNum" value="<%=num %>" readonly/></td>	
 				</tr>
 				<tr>		
 					<td>제목</td>
@@ -62,7 +67,7 @@
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="fn_sendBoard()" /> 
-			<input type="button" value="취소" onclick="location.href='http://localhost:8080/OnlyList/BoardListForm.jsp';"/> 
+			<input type="button" value="뒤로" onclick="location.href='http://localhost:8080/OnlyList/BoardListForm.jsp';"/> 
 			<input type="hidden" name="command" value="updateBoard" />
 		</form>
 	</body>

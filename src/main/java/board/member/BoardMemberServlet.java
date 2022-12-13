@@ -40,10 +40,11 @@ public class BoardMemberServlet extends HttpServlet {
 		if (result) {		
 			HttpSession session = request.getSession();
 			session.setAttribute("isLogon", true);
-			session.setAttribute("id", user_id);
-			session.setAttribute("pwd", user_pwd);
+			session.setAttribute("user_id", user_id);
 			response.sendRedirect("BoardListForm.jsp");
-		} else {			
+		} else {		
+			HttpSession session = request.getSession();
+			session.setAttribute("isLogon", false);
 			response.sendRedirect("BoardLoginForm.jsp");
 		}
 	}

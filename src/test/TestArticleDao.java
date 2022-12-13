@@ -18,16 +18,13 @@ class TestArticleDao {
 	@AfterEach
 	void readArticle() {
 		int a = BoardArticleDAO.getNextNum();
-		List<BoardArticleVO> afterBoard 
+		BoardArticleVO afterBoard 
 		= BoardArticleDAO.readArticle( Integer.toString(a));
 		
-		for(BoardArticleVO vo : afterBoard) {
-			System.out.println("작성자: " + vo.getWriter());
-			System.out.println("공개여부: " + vo.getIs_private());
-			System.out.println("제목: " + vo.getTitle());
-			System.out.println("내용: " + vo.getContent());
-		
-		}
+			System.out.println("작성자: " + afterBoard.getWriter());
+			System.out.println("공개여부: " + afterBoard.getIs_private());
+			System.out.println("제목: " + afterBoard.getTitle());
+			System.out.println("내용: " + afterBoard.getContent());
 	}
 	
 	@Test
