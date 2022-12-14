@@ -13,7 +13,6 @@ import board.db.DBUtil;
 public class BoardListDAO {
 	public static int getTotal() {
 		int result = -1;
-//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		String query = "SELECT COUNT(*) as total"
 					 + " FROM board";
 		try ( Connection con = DBUtil.getConnection();
@@ -43,7 +42,6 @@ public class BoardListDAO {
 					   + "FROM board "
 					   + "ORDER BY num DESC "
 					   + "OFFSET ? ROWS FETCH FIRST 10 ROWS ONLY ";
-			System.out.println("prepareStatememt: " + query);
 		try { 
 			Connection con = DBUtil.getConnection();
 		    PreparedStatement pstmt = con.prepareStatement(query);  
@@ -81,7 +79,6 @@ public class BoardListDAO {
 			}
 			pstmt.close();
 			con.close();
-			System.out.println("done");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

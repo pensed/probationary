@@ -10,8 +10,6 @@
 	String num = request.getParameter("num");
 	BoardArticleDAO boardArticle = new BoardArticleDAO();
 	BoardArticleVO board = boardArticle.readArticle(num);
-	System.out.println(board.getWriter() + " " + session.getAttribute("user_id"));
-	//String str = board.get(0).getIs_private();
 %>
 <!DOCTYPE html>
 <html>

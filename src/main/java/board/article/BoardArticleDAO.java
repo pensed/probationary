@@ -19,7 +19,6 @@ public class BoardArticleDAO {
 			Connection con = DBUtil.getConnection();
 			String query = "SELECT max(num)+1 AS num "
 						 + "FROM board ";
-			System.out.println("prepareStatememt: " + query);
 			PreparedStatement pstmt = con.prepareStatement(query);
 			ResultSet rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -47,8 +46,6 @@ public class BoardArticleDAO {
 			String query 		= "INSERT INTO board";
 				   query += " (num, writer, title, create_day, cnt, content, is_private)";
 				   query += " VALUES(?,?,?,sysdate,0,?,?)";
-			
-			System.out.println("prepareStatememt: " + query);
 			
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
@@ -100,7 +97,6 @@ public class BoardArticleDAO {
 		vo.setTitle("");
 		vo.setContent("");
 		vo.setIs_private("");
-//		System.out.println("PreparedStatement:" + query);
 		try {
 			Connection con = DBUtil.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(query);
@@ -144,8 +140,6 @@ public class BoardArticleDAO {
 				   		 			+ "modify_day = SYSDATE, "
 				   		 			+ "is_private = ? "
 				   		 		+ "WHERE num = ? ";
-//			System.out.println("prepareStatememt: " + query);
-//			System.out.println(num + ", " + title);
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, title);

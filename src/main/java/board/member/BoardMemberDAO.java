@@ -35,13 +35,4 @@ public class BoardMemberDAO {
 		return memberVO.getRememberId();
 	}
 	
-	public static String getCookieValue(Cookie[] cookies) {
-		for(Cookie cookie : cookies) {
-			if(cookie.getName().equals("AUTH")) {
-				return cookie.getValue();
-			}
-		}
-		return "";
-	}
-	
 }

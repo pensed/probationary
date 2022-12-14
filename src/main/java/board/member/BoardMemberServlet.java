@@ -28,19 +28,19 @@ public class BoardMemberServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		String user_id = request.getParameter("id");
-		String user_pwd = request.getParameter("pwd");
+		String id = request.getParameter("id");
+		String pwd = request.getParameter("pwd");
 		
 		BoardMemberVO memberVO = new BoardMemberVO();
-		memberVO.setId(user_id);
-		memberVO.setPwd(user_pwd);
+		memberVO.setId(id);
+		memberVO.setPwd(pwd);
 		BoardMemberDAO dao = new BoardMemberDAO();
 		boolean result = dao.isExisted(memberVO);
 		
 		if (result) {		
 			HttpSession session = request.getSession();
 			session.setAttribute("isLogon", true);
-			session.setAttribute("user_id", user_id);
+			session.setAttribute("id", id);
 			response.sendRedirect("BoardListForm.jsp");
 		} else {		
 			HttpSession session = request.getSession();
