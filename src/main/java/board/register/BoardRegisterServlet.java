@@ -33,7 +33,7 @@ public class BoardRegisterServlet extends HttpServlet {
 	    	String writer	  =request.getParameter("writer");
 			String title	  =request.getParameter("title");
 			String content	  =request.getParameter("content");
-			String isPrivate  =request.getParameter("input_check").toUpperCase();
+			String isPrivate  =request.getParameter("inputCheck").toUpperCase();
 //			System.out.println(is_private); 
 			BoardArticleVO vo=new BoardArticleVO();
 			 				vo.setWriter(writer);
