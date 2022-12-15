@@ -34,14 +34,14 @@ public class BoardUpdateServlet extends HttpServlet {
 	    	String writer	  =request.getParameter("writer");
 			String title	  =request.getParameter("title");
 			String content	  =request.getParameter("content");
-			String is_private=request.getParameter("input_check").toUpperCase();
+			String isPrivate  =request.getParameter("inputCheck").toUpperCase();
 //			System.out.println(is_private); 
 			BoardArticleVO vo=new BoardArticleVO();
 							vo.setNum(num);
 			 				vo.setWriter(writer);
 			 				vo.setTitle(title);
 			 				vo.setContent(content);
-			 				vo.setIs_private(is_private);
+			 				vo.setIsPrivate(isPrivate);
 		   dao.updateArticle(vo);
 	    }
 	    System.out.println("BoardArticleVO 보내기 성공");

@@ -12,6 +12,7 @@ public class BoardMemberDAO {
 	public boolean isExisted(BoardMemberVO memberVO) {
 //		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		memberVO.setRememberId(false);
+		Boolean bl = memberVO.getRememberId();
 		String id = memberVO.getId();
 		String pwd = memberVO.getPwd();
 		
@@ -26,7 +27,8 @@ public class BoardMemberDAO {
 			pstmt.setString(2,  pwd);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
-			memberVO.setRememberId(Boolean.parseBoolean(rs.getString("result")));
+			bl = rs.getBoolean("result");
+			memberVO.setRememberId(bl);
 		}catch (Exception e) {
 			e.printStackTrace();
 		}

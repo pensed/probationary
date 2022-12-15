@@ -8,7 +8,7 @@ public class BoardArticleVO {
 	private String writer;
 	private String title;
 	private String content;
-	private String is_private;
+	private String isPrivate;
 	private Date date;
 	
 	public String getNum() {
@@ -35,11 +35,11 @@ public class BoardArticleVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getIs_private() {
-		return is_private;
+	public String getIsPrivate() {
+		return isPrivate;
 	}
-	public void setIs_private(String is_private) {
-		this.is_private = is_private;
+	public void setIsPrivate(String isPrivate) {
+		this.isPrivate = isPrivate;
 	}
 	public Date getDate() {
 		return date;

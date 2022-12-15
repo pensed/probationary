@@ -4,7 +4,6 @@ import static org.junit.Assert.assertSame;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
@@ -17,8 +16,6 @@ import board.article.BoardArticleVO;
 import board.db.DBUtil;
 import board.list.BoardListDAO;
 import board.list.BoardListVO;
-import board.register.BoardRegisterDAO;
-import board.register.BoardRegisterVO;
 
 class TestListDao {
 	
@@ -62,14 +59,13 @@ class TestListDao {
 	
 	@Test	//게시글 상세내용 보기
 	void ViewArticle() {
-		Scanner sc = new Scanner(System.in);
 		BoardArticleVO afterBoard;
 		
 		System.out.println("Input board num: ");
 		
 		afterBoard = BoardArticleDAO.readArticle(Integer.toString(BoardArticleDAO.getNextNum()));
 			System.out.println("작성자: " + afterBoard.getWriter());
-			System.out.println("공개여부: " + afterBoard.getIs_private());
+			System.out.println("공개여부: " + afterBoard.getIsPrivate());
 			System.out.println("제목: " + afterBoard.getTitle());
 			System.out.println("내용: " + afterBoard.getContent());
 		
@@ -93,12 +89,12 @@ class TestListDao {
 			String content	   	= request.get("content");
 			String is_private 	= request.get("input_check");
 			
-			BoardRegisterVO vo=new BoardRegisterVO();
+			BoardArticleVO vo=new BoardArticleVO();
 							vo.setWriter(writer);
 							vo.setTitle(title);
 							vo.setContent(content);
-							vo.setIs_private(is_private);
-			new BoardRegisterDAO().addBoard(vo);
+							vo.setIsPrivate(is_private);
+			new BoardArticleDAO().createArticle(vo);
 		}
 	}
 	 @Test
@@ -109,18 +105,17 @@ class TestListDao {
 	    request.put("title", "This is title");
 	    request.put("content", "This is content");
 	    request.put("input_check", "N");
-	    BoardListDAO boardListDao = new BoardListDAO();
 	    List<BoardListVO> beforeBoard = BoardListDAO.listBoard(1);
 	    String writer = request.get("writer");
 	    String title = request.get("title");
 	    String content = request.get("content");
 	    String is_private = request.get("input_check");
-	    BoardRegisterVO vo = new BoardRegisterVO();
+	    BoardArticleVO vo = new BoardArticleVO();
 	    vo.setWriter(writer);
 	    vo.setTitle(title);
 	    vo.setContent(content);
-	    vo.setIs_private(is_private);
-	    (new BoardRegisterDAO()).addBoard(vo);
+	    vo.setIsPrivate(is_private);
+	    (new BoardArticleDAO()).createArticle(vo);
 	    List<BoardListVO> afterBoard = BoardListDAO.listBoard(1);
 	    Assertions.assertEquals(beforeBoard.size() + 1, afterBoard.size());
 	  }

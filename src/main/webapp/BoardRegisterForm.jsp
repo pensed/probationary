@@ -19,13 +19,13 @@
 		<meta charset="UTF-8" />
 		<title>게시글 작성</title>
 		<script type="text/javascript">
-			function fn_sendBoard() {
+			function fnSendBoard() {
 				var frmBoardReigster = document.frmBoardReigster;
 				var writer = frmBoardReigster.writer.value;
 				var title = frmBoardReigster.title.value;
 				var content = frmBoardReigster.content.value;
-				if (document.getElementById("input_check").checked) {
-					document.getElementById("input_check_hidden").disabled = true;
+				if (document.getElementById("inputCheck").checked) {
+					document.getElementById("inputCheckHidden").disabled = true;
 				}
 				if (title.length == 0 || title == "") {
 					alert("제목을 작성 후 등록 바랍니다.");
@@ -50,9 +50,9 @@
 				<th>게시글 작성</th>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" name="writer" size="30" value="<%=session.getAttribute("user_id")%>" readonly/> 비공개 
-						<input type="checkbox" name="input_check" value="Y" id="input_check" />
-						<input type="hidden" name="input_check" value="N" id="input_check_hidden" />
+					<td><input type="text" name="writer" size="30" value="<%=session.getAttribute("id")%>" readonly/> 비공개 
+						<input type="checkbox" name="inputCheck" value="Y" id="inputCheck" />
+						<input type="hidden" name="inputCheck" value="N" id="inputCheckHidden" />
 				</tr>
 				<tr>
 					<td>제목</td>
@@ -63,8 +63,8 @@
 					<td><input type="text" name="content" style="width: 500px; height: 200px;" /></td>
 				</tr>
 			</table>
-			<input type="button" value="저장" onclick="fn_sendBoard();" /> 
-			<input type="button" value="뒤로" onclick="location.href='http://localhost:8080/OnlyList/BoardListForm.jsp';"/> 
+			<input type="button" value="저장" onclick="fnSendBoard();" /> 
+			<input type="button" value="뒤로" onclick="location.href='http://localhost:8080/BoardListForm.jsp';"/> 
 			<input type="hidden" name="command" value="addBoard" />
 		</form>
 	</body>

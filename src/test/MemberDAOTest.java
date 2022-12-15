@@ -1,7 +1,6 @@
 import org.junit.jupiter.api.Test;
 
 import board.db.DBUtil;
-import board.member.BoardMemberDAO;
 import board.member.BoardMemberVO;
 
 class MemberDAOTest {

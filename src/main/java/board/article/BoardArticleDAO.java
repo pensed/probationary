@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import board.db.DBUtil;
-import board.register.BoardRegisterVO;
 
 public class BoardArticleDAO {
 
@@ -42,7 +41,7 @@ public class BoardArticleDAO {
 			String writer 		= boardArticleVO.getWriter();
 			String title 		= boardArticleVO.getTitle();
 			String content 		= boardArticleVO.getContent();
-			String is_private 	= boardArticleVO.getIs_private();
+			String isPrivate 	= boardArticleVO.getIsPrivate();
 			String query 		= "INSERT INTO board";
 				   query += " (num, writer, title, create_day, cnt, content, is_private)";
 				   query += " VALUES(?,?,?,sysdate,0,?,?)";
@@ -53,7 +52,7 @@ public class BoardArticleDAO {
 			pstmt.setString(2, writer);
 			pstmt.setString(3, title);
 			pstmt.setString(4, content);
-			pstmt.setString(5, is_private);
+			pstmt.setString(5, isPrivate);
 			pstmt.executeUpdate();
 			pstmt.close();
 			con.close();
@@ -96,7 +95,7 @@ public class BoardArticleDAO {
 		vo.setWriter("");
 		vo.setTitle("");
 		vo.setContent("");
-		vo.setIs_private("");
+		vo.setIsPrivate("");
 		try {
 			Connection con = DBUtil.getConnection();
 			PreparedStatement pstmt = con.prepareStatement(query);
@@ -107,13 +106,13 @@ public class BoardArticleDAO {
 			String writer     = rs.getString("writer");
 			String title      = rs.getString("title");
 			String content	  = rs.getString("content");
-			String is_private = rs.getString("is_private");
+			String isPrivate = rs.getString("is_private");
 
 			vo.setNum(num);
 			vo.setWriter(writer);
 			vo.setTitle(title);
 			vo.setContent(content);
-			vo.setIs_private(is_private);
+			vo.setIsPrivate(isPrivate);
 			
 			pstmt.close();
 			con.close();
@@ -132,7 +131,7 @@ public class BoardArticleDAO {
 			String num 	  		= boardArticleVO.getNum();
 			String title 		= boardArticleVO.getTitle();
 			String content 		= boardArticleVO.getContent();
-			String is_private 	= boardArticleVO.getIs_private();
+			String isPrivate 	= boardArticleVO.getIsPrivate();
 			String query 		= "UPDATE board "
 				   		 		+ "SET "
 				   		 			+ "title = ?, "
@@ -144,7 +143,7 @@ public class BoardArticleDAO {
 			
 			pstmt.setString(1, title);
 			pstmt.setString(2, content);
-			pstmt.setString(3, is_private);
+			pstmt.setString(3, isPrivate);
 			pstmt.setString(4, num);
 			pstmt.executeUpdate();
 			pstmt.close();

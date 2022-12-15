@@ -24,11 +24,11 @@
 				<th>게시글 상세</th>
 				<tr>
 					<%
-					if(Objects.equals(board.getIs_private(),"N")) { 
+					if(Objects.equals(board.getIsPrivate(),"N")) { 
 					%>
 					<td>작성자</td>
 					<td><input type="text" name="writer" size="30" value="<%=board.getWriter()%>" readonly> 
-					&nbsp;&nbsp;공개여부&nbsp;<%=board.getIs_private() %></td>
+					&nbsp;&nbsp;공개여부&nbsp;<%=board.getIsPrivate() %></td>
 					</tr>
 					<tr>
 					<td>제목</td>
@@ -39,12 +39,12 @@
 					<td><input type="text" name="content" style="width: 500px; height: 200px;" value="<%=board.getContent()%>" readonly/></td>
 					</tr>
 					<%
-					} else if(Objects.equals(board.getIs_private(),"Y")){ 
+					} else if(Objects.equals(board.getIsPrivate(),"Y")){ 
 						if(Objects.equals(board.getWriter(),session.getAttribute("id"))) {
 							%>
 							<td>작성자</td>
 							<td><input type="text" name="writer" size="30" value="<%=board.getWriter()%>" readonly> 
-							&nbsp;&nbsp;공개여부&nbsp;<%=board.getIs_private() %></td>
+							&nbsp;&nbsp;공개여부&nbsp;<%=board.getIsPrivate() %></td>
 							</tr>
 							<tr>
 							<td>제목</td>
