@@ -22,8 +22,12 @@ public class BoardFilter implements Filter {
 	
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
-		HttpServletRequest httpRequest = (HttpServletRequest) request;
+	throws IOException, ServletException {
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=utf-8");
+		
+		HttpServletRequest httpRequest   = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		
 		String uri = httpRequest.getRequestURI();

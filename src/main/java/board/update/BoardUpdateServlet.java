@@ -24,8 +24,6 @@ public class BoardUpdateServlet extends HttpServlet {
 	throws ServletException, IOException {
 		
 		System.out.println("BoardArticleDAO 사용하기");
-		request.setCharacterEncoding("utf-8");
-	    response.setContentType("text/html;charset=utf-8");
 	    BoardArticleDAO dao=new BoardArticleDAO();
 	    String command=request.getParameter("command");
 	      
@@ -35,13 +33,12 @@ public class BoardUpdateServlet extends HttpServlet {
 			String title	  =request.getParameter("title");
 			String content	  =request.getParameter("content");
 			String isPrivate  =request.getParameter("inputCheck").toUpperCase();
-//			System.out.println(is_private); 
 			BoardArticleVO vo=new BoardArticleVO();
-							vo.setNum(num);
-			 				vo.setWriter(writer);
-			 				vo.setTitle(title);
-			 				vo.setContent(content);
-			 				vo.setIsPrivate(isPrivate);
+						   vo.setNum(num);
+						   vo.setWriter(writer);
+						   vo.setTitle(title);
+						   vo.setContent(content);
+						   vo.setIsPrivate(isPrivate);
 		   dao.updateArticle(vo);
 	    }
 	    System.out.println("BoardArticleVO 보내기 성공");
