@@ -29,10 +29,8 @@ public class BoardFilter implements Filter {
 		String uri = httpRequest.getRequestURI();
 		HttpSession httpSession = httpRequest.getSession();
 		String id = (String) httpSession.getAttribute("id");
-		String delete = "/BoardArticleDeleteForm.jsp";
-		String update = "/BoardArticleUpdateForm.jsp";
 		
-		if(uri.indexOf(delete)==0||uri.indexOf(update)==0) {
+		if(uri.contains("Delete")||uri.contains("Update")) {
 			if(id==null || id.trim().length() <=0) {
 				httpResponse.sendRedirect("/BoardListForm.jsp");
 			}

@@ -163,7 +163,6 @@ public class BoardArticleDAO {
 			String query = "DELETE FROM board "
 						 + "WHERE num = ? ";
 			
-			System.out.println("prepareStatememt: " + query + num);
 			PreparedStatement pstmt = con.prepareStatement(query);
 			
 			pstmt.setString(1, num);

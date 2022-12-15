@@ -21,14 +21,12 @@ public class BoardMemberDAO {
 						     + "DECODE(COUNT(*), 1 , 'true', 'false') as result "
 						 + "FROM boarduser "
 						 + "WHERE id = ? AND pwd = ? ";
-			System.out.println(query);
 			PreparedStatement pstmt = con.prepareStatement(query);
 			pstmt.setString(1,  id);
 			pstmt.setString(2,  pwd);
 			ResultSet rs = pstmt.executeQuery();
 			rs.next();
 			memberVO.setRememberId(Boolean.parseBoolean(rs.getString("result")));
-			System.out.println("result = " + memberVO.getRememberId());
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
