@@ -5,7 +5,7 @@
 	String num = request.getParameter("num");
 	BoardArticleDAO boardArticle = new BoardArticleDAO();
 	BoardArticleVO board = boardArticle.readArticle(num);	
-	if(!Objects.equals(board.getWriter(),session.getAttribute("user_id"))){
+	if(!Objects.equals(board.getWriter(),session.getAttribute("id"))){
 			out.println("<script>alert('작성자가 아닙니다.'); history.back();</script>");
 	}
 %>
@@ -15,15 +15,15 @@
 		<meta charset="UTF-8" />
 		<title>게시글 작성</title>
 		<script type="text/javascript">
-			function fn_sendBoard() {
+			function fnSendBoard() {
 				var frmBoardUpdate = document.frmBoardUpdate;
 				console.log(frmBoardUpdate);
 				var writer = frmBoardUpdate.writer.value;
 				var num = frmBoardUpdate.boardNum.value;
 				var title = frmBoardUpdate.title.value;
 				var content = frmBoardUpdate.content.value;
-				if (document.getElementById("input_check").checked) {
-					document.getElementById("input_check_hidden").disabled = true;
+				if (document.getElementById("inputCheck").checked) {
+					document.getElementById("inputCheckHidden").disabled = true;
 				}
 				if (title.length == 0 || title == "") {
 					alert("제목을 작성 후 등록 바랍니다.");
@@ -48,10 +48,10 @@
 				<th>게시글 수정</th>
 				<tr>
 					<td>작성자</td>
-					<td><input type="text" id='writer' name="writer" size="30" value="<%=session.getAttribute("user_id")%>" readonly/> 비공개 
-						<input type="checkbox" name="input_check" value="Y" id="input_check" />
-						<input type="hidden" name="input_check" value="N" id="input_check_hidden" />
-						<input type="hidden" name="num" value="<%=num %>"  id="input_check_hidden" /> 
+					<td><input type="text" id='writer' name="writer" size="30" value="<%=session.getAttribute("id")%>" readonly/> 비공개 
+						<input type="checkbox" name="input_check" value="Y" id="inputCheck" />
+						<input type="hidden" name="input_check" value="N" id="inputCheckHidden" />
+						<input type="hidden" name="num" value="<%=num %>"  id="inputCheckHidden" /> 
 				</tr>
 				<tr>
 					<td>번호</td>
@@ -66,7 +66,7 @@
 					<td><input type="text" id='content' name="content" style="width: 500px; height: 200px;" /></td>
 				</tr>
 			</table>
-			<input type="button" value="저장" onclick="fn_sendBoard()" /> 
+			<input type="button" value="저장" onclick="fnSendBoard()" /> 
 			<input type="button" value="뒤로" onclick="location.href='http://localhost:8080/OnlyList/BoardListForm.jsp';"/> 
 			<input type="hidden" name="command" value="updateBoard" />
 		</form>

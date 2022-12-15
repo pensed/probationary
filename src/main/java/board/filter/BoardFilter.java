@@ -29,26 +29,19 @@ public class BoardFilter implements Filter {
 		String uri = httpRequest.getRequestURI();
 		HttpSession httpSession = httpRequest.getSession();
 		String id = (String) httpSession.getAttribute("id");
+		String delete = "/BoardArticleDeleteForm.jsp";
+		String update = "/BoardArticleUpdateForm.jsp";
 		
-		System.out.println(uri);
-		System.out.println(id);
-		
-		if(uri.indexOf("/BoardArticleDeleteForm.jsp")==0) {
+		if(uri.indexOf(delete)==0||uri.indexOf(update)==0) {
 			if(id==null || id.trim().length() <=0) {
 				httpResponse.sendRedirect("/BoardListForm.jsp");
-			} else {
-				
 			}
-		}else {
-			
 		}
 		chain.doFilter(request, response);
 	}
 	
 	@Override
 	public void destroy() {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }

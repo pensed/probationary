@@ -40,7 +40,7 @@
 					</tr>
 					<%
 					} else if(Objects.equals(board.getIs_private(),"Y")){ 
-						if(Objects.equals(board.getWriter(),session.getAttribute("user_id"))) {
+						if(Objects.equals(board.getWriter(),session.getAttribute("id"))) {
 							%>
 							<td>작성자</td>
 							<td><input type="text" name="writer" size="30" value="<%=board.getWriter()%>" readonly> 
