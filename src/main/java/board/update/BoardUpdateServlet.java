@@ -23,7 +23,6 @@ public class BoardUpdateServlet extends HttpServlet {
 	private void doHandle(HttpServletRequest request,HttpServletResponse response)  
 	throws ServletException, IOException {
 		
-		System.out.println("BoardArticleDAO 사용하기");
 	    BoardArticleDAO dao=new BoardArticleDAO();
 	    String command=request.getParameter("command");
 	      
@@ -41,7 +40,6 @@ public class BoardUpdateServlet extends HttpServlet {
 						   vo.setIsPrivate(isPrivate);
 		   dao.updateArticle(vo);
 	    }
-	    System.out.println("BoardArticleVO 보내기 성공");
 	    response.sendRedirect("BoardListForm.jsp");
 	}
 }

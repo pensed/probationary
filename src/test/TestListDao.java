@@ -19,10 +19,6 @@ import board.list.BoardListVO;
 
 class TestListDao {
 	
-	@BeforeAll
-	void beforeAll() {
-		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
-	}
 
 	@Test	//페이지수 보기
 	void viewPageTotal() {
@@ -109,7 +105,7 @@ class TestListDao {
 	    String writer = request.get("writer");
 	    String title = request.get("title");
 	    String content = request.get("content");
-	    String is_private = request.get("input_check");
+	    String is_private = request.get("inputCheck");
 	    BoardArticleVO vo = new BoardArticleVO();
 	    vo.setWriter(writer);
 	    vo.setTitle(title);

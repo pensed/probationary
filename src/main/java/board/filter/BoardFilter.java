@@ -1,6 +1,7 @@
 package board.filter;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,11 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 public class BoardFilter implements Filter {
-	private FilterConfig fc;
+	private FilterConfig filterConfig;
 
 	@Override
-	public void init(FilterConfig fc) throws ServletException {
-		this.fc = fc;
+	public void init(FilterConfig filterConfig) throws ServletException {
+		this.filterConfig = filterConfig;
 	}
 	
 	@Override
@@ -26,7 +27,7 @@ public class BoardFilter implements Filter {
 		
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=utf-8");
-		
+		PrintWriter out = response.getWriter();
 		HttpServletRequest httpRequest   = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		
@@ -34,10 +35,17 @@ public class BoardFilter implements Filter {
 		HttpSession httpSession = httpRequest.getSession();
 		String id = (String) httpSession.getAttribute("id");
 		
-		if(uri.contains("Delete")||uri.contains("Update")) {
-			if(id==null || id.trim().length() <=0) {
-				httpResponse.sendRedirect("/BoardListForm.jsp");
-			}
+		switch(uri) {
+			case "/BoardArticleDeleteForm.jsp":
+			case "/BoardArticleUpdateForm.jsp":
+			case "/boardmember":
+			case "/boardregister":
+				if(id==null || id.trim().length() <= 0) {
+					out.println("<script>href=\"/BoardListForm.jsp\"</script>");
+				} 
+				break;
+			default:
+				break;
 		}
 		chain.doFilter(request, response);
 	}

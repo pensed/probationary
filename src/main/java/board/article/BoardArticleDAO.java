@@ -10,7 +10,7 @@ import java.util.List;
 import board.db.DBUtil;
 
 public class BoardArticleDAO {
-
+	
 	public static int getNextNum() {
 		int num = 0;
 //		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");

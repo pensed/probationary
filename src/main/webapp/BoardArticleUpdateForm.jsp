@@ -63,7 +63,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><input type="text" id='content' name="content" style="width: 500px; height: 200px;" /></td>
+					<td><input type="textarea" id='content' name="content" style="width: 500px; height: 200px; word-wrap:break-word;" /></td>
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="fnSendBoard()" /> 

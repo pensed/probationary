@@ -9,7 +9,7 @@
 	String num = request.getParameter("num");
 	BoardArticleDAO boardArticle = new BoardArticleDAO();
 	BoardArticleVO board = boardArticle.readArticle(num);	
-	if(Objects.equals(board.getWriter(),session.getAttribute("id")) || Objects.equals(session.getAttribute("id"), "admin")){
+	if(Objects.equals(board.getWriter(),session.getAttribute("id"))){
 		boardArticle.deleteArticle(num);	
 	} else {
 		out.println("<script>alert('작성자 혹은 관리자가 아닙니다.'); history.back();</script>");

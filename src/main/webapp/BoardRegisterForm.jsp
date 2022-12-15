@@ -60,7 +60,7 @@
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><input type="text" name="content" style="width: 500px; height: 200px;" /></td>
+					<td><textarea type="text" name="content" style="width: 500px; height: 200px; word-wrap:break-word;" ></textarea></textarea></td>
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="fnSendBoard();" /> 
