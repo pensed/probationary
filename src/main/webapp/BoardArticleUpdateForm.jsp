@@ -59,11 +59,11 @@
 				</tr>
 				<tr>		
 					<td>제목</td>
-					<td><input type="text" id='title' name="title" style="width: 500px" /></td>
+					<td><input type="text" id='title' name="title" style="width: 500px" value="<%=board.getTitle() %>"/></td>
 				</tr>
 				<tr>
 					<td>내용</td>
-					<td><input type="textarea" id='content' name="content" style="width: 500px; height: 200px; word-wrap:break-word;" /></td>
+					<td><input type="textarea" id='content' name="content" style="width: 500px; height: 200px; word-wrap:break-word;" value="<%=board.getContent()%>"/></td>
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="fnSendBoard()" /> 

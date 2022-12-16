@@ -44,8 +44,12 @@
 					<td><input type="text" name="content" style="width: 500px; height: 200px;" value="<%=board.getContent()%>" readonly/></td>
 				</tr>
 			</table>
-				<input type="button" value="수정" onclick="location.href='BoardArticleUpdateForm.jsp?num=<%=num%>'" />
-				<input type="button" value="삭제" onclick="location.href='BoardArticleDeleteForm.jsp?num=<%=num%>'"/>
+				<%
+				if(Objects.equals(board.getWriter(),session.getAttribute("id"))||Objects.equals(root,session.getAttribute("id"))){
+				%>
+					<input type="button" value="수정" onclick="location.href='BoardArticleUpdateForm.jsp?num=<%=num%>'" />
+					<input type="button" value="삭제" onclick="location.href='BoardArticleDeleteForm.jsp?num=<%=num%>'"/>
+				<% } %>
 				<input type="button" value="뒤로" onclick="location.href='http://localhost:8080/BoardListForm.jsp';"/> 
 				<input type="hidden" name="command" value="addBoard" />
 			</form>

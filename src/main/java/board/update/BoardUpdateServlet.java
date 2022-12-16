@@ -15,6 +15,12 @@ public class BoardUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	throws ServletException, IOException {
+		doHandle(request, response);
+	}
+	
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException {
 		doHandle(request, response);
@@ -30,14 +36,13 @@ public class BoardUpdateServlet extends HttpServlet {
 			String title	  =request.getParameter("title");
 			String content	  =request.getParameter("content");
 			String isPrivate  =request.getParameter("inputCheck").toUpperCase();
-			System.out.println(isPrivate);
 			BoardArticleVO vo=new BoardArticleVO();
 						   vo.setNum(num);
 						   vo.setTitle(title);
 						   vo.setContent(content);
 						   vo.setIsPrivate(isPrivate);
 		   dao.updateArticle(vo);
+		   response.sendRedirect("BoardArticleForm.jsp?num="+vo.getNum());
 	    }
-	    response.sendRedirect("BoardListForm.jsp");
 	}
 }
