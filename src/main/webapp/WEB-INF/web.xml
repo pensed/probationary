@@ -12,34 +12,34 @@
 
 	<!-- 서블릿  -->
 	<servlet>
-		<servlet-name>boardmember</servlet-name>
+		<servlet-name>boardMember</servlet-name>
 		<servlet-class>board.member.BoardMemberServlet</servlet-class>
 	</servlet>
 
 	<servlet>
-		<servlet-name>boardregister</servlet-name>
+		<servlet-name>boardRegister</servlet-name>
 		<servlet-class>board.register.BoardRegisterServlet</servlet-class>
 	</servlet>
 	
 	<servlet>
-		<servlet-name>boardupdate</servlet-name>
+		<servlet-name>boardUpdate</servlet-name>
 		<servlet-class>board.update.BoardUpdateServlet</servlet-class>
 	</servlet>
 	
 	<!-- 서블릿 매핑 -->
 	<servlet-mapping>
-		<servlet-name>boardmember</servlet-name>
-		<url-pattern>/boardmember</url-pattern>
+		<servlet-name>boardMember</servlet-name>
+		<url-pattern>/boardMember</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
-		<servlet-name>boardregister</servlet-name>
-		<url-pattern>/boardregister</url-pattern>
+		<servlet-name>boardRegister</servlet-name>
+		<url-pattern>/boardRegister</url-pattern>
 	</servlet-mapping>
 	
 	<servlet-mapping>
-		<servlet-name>boardupdate</servlet-name>
-		<url-pattern>/boardupdate</url-pattern>
+		<servlet-name>boardUpdate</servlet-name>
+		<url-pattern>/boardUpdate</url-pattern>
 	</servlet-mapping>
 	
 	<!-- 필터 -->
@@ -53,4 +53,5 @@
 		<filter-name>boardFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
 </web-app>

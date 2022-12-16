@@ -4,7 +4,7 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <%
   String pageNum = request.getParameter("pageNum");
-  if (pageNum == null){ // 클릭한게 없으면 1번 페이지
+  if (pageNum == null){
 	pageNum = "1";
   }
   int currentPage = Integer.parseInt(pageNum);

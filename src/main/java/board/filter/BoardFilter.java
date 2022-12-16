@@ -38,8 +38,9 @@ public class BoardFilter implements Filter {
 		switch(uri) {
 			case "/BoardArticleDeleteForm.jsp":
 			case "/BoardArticleUpdateForm.jsp":
-			case "/boardmember":
-			case "/boardregister":
+			case "/boardUpdate":
+			case "/boardMember":
+			case "/boardRegister":
 				if(id==null || id.trim().length() <= 0) {
 					out.println("<script>href=\"/BoardListForm.jsp\"</script>");
 				} 

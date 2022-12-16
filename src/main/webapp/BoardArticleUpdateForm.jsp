@@ -4,8 +4,9 @@
 <%
 	String num = request.getParameter("num");
 	BoardArticleDAO boardArticle = new BoardArticleDAO();
+	String root = boardArticle.getRoot();
 	BoardArticleVO board = boardArticle.readArticle(num);	
-	if(!Objects.equals(board.getWriter(),session.getAttribute("id"))){
+	if(!Objects.equals(board.getWriter(),session.getAttribute("id"))&&!Objects.equals(root,session.getAttribute("id"))){
 			out.println("<script>alert('작성자가 아닙니다.'); history.back();</script>");
 	}
 %>
@@ -18,7 +19,6 @@
 			function fnSendBoard() {
 				var frmBoardUpdate = document.frmBoardUpdate;
 				console.log(frmBoardUpdate);
-				var writer = frmBoardUpdate.writer.value;
 				var num = frmBoardUpdate.boardNum.value;
 				var title = frmBoardUpdate.title.value;
 				var content = frmBoardUpdate.content.value;
@@ -35,7 +35,7 @@
 					alert("최대 내용용량 초과");
 				} else {
 					frmBoardUpdate.method = "post";
-					frmBoardUpdate.action = "boardupdate";
+					frmBoardUpdate.action = "boardUpdate";
 					frmBoardUpdate.submit();
 				}
 			}
@@ -49,8 +49,8 @@
 				<tr>
 					<td>작성자</td>
 					<td><input type="text" id='writer' name="writer" size="30" value="<%=session.getAttribute("id")%>" readonly/> 비공개 
-						<input type="checkbox" name="input_check" value="Y" id="inputCheck" />
-						<input type="hidden" name="input_check" value="N" id="inputCheckHidden" />
+						<input type="checkbox" name="inputCheck" value="Y" id="inputCheck" />
+						<input type="hidden" name="inputCheck" value="N" id="inputCheckHidden" />
 						<input type="hidden" name="num" value="<%=num %>"  id="inputCheckHidden" /> 
 				</tr>
 				<tr>
