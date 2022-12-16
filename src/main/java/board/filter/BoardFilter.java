@@ -42,7 +42,7 @@ public class BoardFilter implements Filter {
 			case "/boardMember":
 			case "/boardRegister":
 				if(id==null || id.trim().length() <= 0) {
-					out.println("<script>href=\"/BoardListForm.jsp\"</script>");
+					httpResponse.sendRedirect("BoardListForm.jsp");
 				} 
 				break;
 			default:
