@@ -10,7 +10,6 @@
 	String num = request.getParameter("num");
 	BoardArticleDAO boardArticle = new BoardArticleDAO();
 	BoardArticleVO board = boardArticle.readArticle(num);
-	String root = boardArticle.getRoot();
 %>
 <!DOCTYPE html>
 <html>
@@ -25,23 +24,42 @@
 				<th>게시글 상세</th>
 				<tr>
 					<%
-					if(Objects.equals(board.getIsPrivate(),"Y")) { 
-						if(!Objects.equals(board.getWriter(),session.getAttribute("id"))&&!Objects.equals(root,session.getAttribute("id"))){
-							out.println("<script>alert(\"열람권한이 없습니다.\");history.back();</script>"); 
-						}
-					}
+					if(Objects.equals(board.getIsPrivate(),"N")) { 
 					%>
 					<td>작성자</td>
 					<td><input type="text" name="writer" size="30" value="<%=board.getWriter()%>" readonly> 
 					&nbsp;&nbsp;공개여부&nbsp;<%=board.getIsPrivate() %></td>
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 					<td>제목</td>
 					<td><input type="text" name="title" style="width: 500px" value="<%=board.getTitle() %>" readonly/></td>
-				</tr>
-				<tr>
+					</tr>
+					<tr>
 					<td>내용</td>
 					<td><input type="text" name="content" style="width: 500px; height: 200px;" value="<%=board.getContent()%>" readonly/></td>
+					</tr>
+					<%
+					} else if(Objects.equals(board.getIsPrivate(),"Y")){ 
+						if(Objects.equals(board.getWriter(),session.getAttribute("id"))) {
+							%>
+							<td>작성자</td>
+							<td><input type="text" name="writer" size="30" value="<%=board.getWriter()%>" readonly> 
+							&nbsp;&nbsp;공개여부&nbsp;<%=board.getIsPrivate() %></td>
+							</tr>
+							<tr>
+							<td>제목</td>
+							<td><input type="text" name="title" style="width: 500px" value="<%=board.getTitle() %>" readonly/></td>
+							</tr>
+							<tr>
+							<td>내용</td>
+							<td><input type="text" name="content" style="width: 500px; height: 200px;" value="<%=board.getContent()%>" readonly/></td>
+							</tr>
+							<%
+						} else {
+							out.println("<script>alert(\"열람권한이 없습니다.\");history.back();</script>"); 
+						}
+					}
+						%>
 				</tr>
 			</table>
 				<input type="button" value="수정" onclick="location.href='BoardArticleUpdateForm.jsp?num=<%=num%>'" />

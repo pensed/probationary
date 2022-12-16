@@ -37,12 +37,13 @@
 					alert("최대 내용용량 초과");
 				} else {
 					frmBoardReigster.method = "post";
-					frmBoardReigster.action = "boardRegister";
+					frmBoardReigster.action = "boardregister";
 					frmBoardReigster.submit();
 				}
 			}
 		</script>
 	</head>
+
 	<body>
 		<form name="frmBoardReigster">
 			<table>
