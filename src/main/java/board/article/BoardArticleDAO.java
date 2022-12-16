@@ -11,6 +11,9 @@ import board.db.DBUtil;
 
 public class BoardArticleDAO {
 	
+	public static String getRoot() {
+		return "admin";
+	}
 	public static int getNextNum() {
 		int num = 0;
 //		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");

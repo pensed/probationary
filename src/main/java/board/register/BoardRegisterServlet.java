@@ -23,7 +23,6 @@ public class BoardRegisterServlet extends HttpServlet {
 	private void doHandle(HttpServletRequest request,HttpServletResponse response)  
 	throws ServletException, IOException {
 		
-		System.out.println("BoardArticleDAO 사용하기");
 	    BoardArticleDAO dao=new BoardArticleDAO();
 	    String command=request.getParameter("command");
 	      

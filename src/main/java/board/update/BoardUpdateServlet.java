@@ -25,16 +25,14 @@ public class BoardUpdateServlet extends HttpServlet {
 		
 	    BoardArticleDAO dao=new BoardArticleDAO();
 	    String command=request.getParameter("command");
-	      
 	    if(command!= null && command.equals("updateBoard")){
 	    	String num 		  =request.getParameter("num");
-	    	String writer	  =request.getParameter("writer");
 			String title	  =request.getParameter("title");
 			String content	  =request.getParameter("content");
 			String isPrivate  =request.getParameter("inputCheck").toUpperCase();
+			System.out.println(isPrivate);
 			BoardArticleVO vo=new BoardArticleVO();
 						   vo.setNum(num);
-						   vo.setWriter(writer);
 						   vo.setTitle(title);
 						   vo.setContent(content);
 						   vo.setIsPrivate(isPrivate);
