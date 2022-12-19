@@ -42,7 +42,8 @@ public class BoardFilter implements Filter {
 			case "/boardMember":
 			case "/boardRegister":
 				if(id==null || id.trim().length() <= 0) {
-					httpResponse.sendRedirect("BoardListForm.jsp");
+					httpResponse = null;
+					httpResponse.sendRedirect("BoardLoginForm.jsp");
 				} 
 				break;
 			default:
