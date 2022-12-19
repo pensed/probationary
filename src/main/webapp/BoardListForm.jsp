@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@page import= "board.list.*" %>
+<%@page import= "board.article.*" %>
 <%@page import="java.util.*" %>
 <%@page import="java.text.SimpleDateFormat" %>
 <%
@@ -12,6 +13,7 @@
   List<BoardListVO> boardList = BoardListDAO.listBoard(currentPage);
   Date dt = new Date();
   SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
+  String root = BoardArticleDAO.getRoot();
 %>
 
 <!DOCTYPE html>
@@ -41,14 +43,25 @@
 			<tr>
 				<td><%=boardList.get(i).getNum() %></td>
 				<td><%=boardList.get(i).getWriter() %></td>
-				<td><a href="BoardArticleForm.jsp?num=<%=boardList.get(i).getNum()%>">
+				<td>
 					<%if(sf.format(dt).compareTo(sf.format(boardList.get(i).getDate()))==0) {
 							out.print("<img src =\"./images/today.png\" style=\"width:30px; height:16px;\" alt=\" \">");
 						}%>
 					<%if(Objects.equals(boardList.get(i).getIs_private(),"Y")) {
 							out.print("<img src =\"./images/lock.png\" style=\"width:12px; height:12px;\" alt=\" \">");
 						}%>
-						<%=boardList.get(i).getTitle()%></a></td>
+					<%if (Objects.equals(boardList.get(i).getIs_private(),"Y")){
+						if(!Objects.equals(boardList.get(i).getWriter(),session.getAttribute("id"))&&!Objects.equals(root,session.getAttribute("id"))){ 
+							out.print("<a>");
+						}else { 
+							out.print("<a href=\"BoardArticleForm.jsp?num="+boardList.get(i).getNum()+"\">");
+						}
+					  } else {
+							out.print("<a href=\"BoardArticleForm.jsp?num="+boardList.get(i).getNum()+"\">");
+					}%>
+						
+						<%=boardList.get(i).getTitle()%>
+						</a></td>
 				<td><%=boardList.get(i).getDate() %></td>
 				<td><%=boardList.get(i).getCnt() %></td>
 			</tr>

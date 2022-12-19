@@ -6,13 +6,15 @@ import java.io.PrintWriter;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import java.lang.Boolean;
+import java.util.Objects;
 public class BoardFilter implements Filter {
 	private FilterConfig filterConfig;
 
@@ -33,23 +35,24 @@ public class BoardFilter implements Filter {
 		
 		String uri = httpRequest.getRequestURI();
 		HttpSession httpSession = httpRequest.getSession();
-		String id = (String) httpSession.getAttribute("id");
+		Boolean isLogin= (Boolean) httpSession.getAttribute("isLogon");
 		
 		switch(uri) {
 			case "/BoardArticleDeleteForm.jsp":
 			case "/BoardArticleUpdateForm.jsp":
 			case "/boardUpdate":
-			case "/boardMember":
 			case "/boardRegister":
-				if(id==null || id.trim().length() <= 0) {
-					httpResponse = null;
-					httpResponse.sendRedirect("BoardLoginForm.jsp");
-				} 
+				if(Objects.nonNull(isLogin) && isLogin) {
+					chain.doFilter(request, response);
+				}else {
+					RequestDispatcher requestDispatcher = request.getRequestDispatcher("/BoardLoginForm.jsp");
+					requestDispatcher.forward(httpRequest, httpResponse);
+				}
 				break;
 			default:
+				chain.doFilter(request, response);
 				break;
 		}
-		chain.doFilter(request, response);
 	}
 	
 	@Override
