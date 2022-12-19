@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,14 +21,15 @@ import board.list.BoardListVO;
 
 class TestListDao {
 	
+	private Logger logger = LogManager.getLogger(LogTest.class);
 
 	@Test	//페이지수 보기
 	void viewPageTotal() {
-		System.out.println("총페이지 수는 " 
+		logger.info("총페이지 수는 " 
 						   + BoardListDAO.getTotal() 
 						   + " 페이지 입니다.");
 	}
-	
+	@Disabled
 	@Test	//페이지별 목록 보기
 	void ViewPageTest() {
 		
@@ -41,9 +44,9 @@ class TestListDao {
 			 if(afterBoard.size() == 0) {
 				 break;
 			 } else {
-				 System.out.println((i)+" 페이지");
+				 logger.info((i)+" 페이지");
 				 for(BoardListVO vo : afterBoard) {
-					 System.out.println(vo.getNum() + ", " 
+					 logger.info(vo.getNum() + ", " 
 							 		  + vo.getWriter() + ", " 
 							 		  + vo.getTitle() + ", " 
 							 		  + vo.getDate() + ", "
@@ -52,7 +55,7 @@ class TestListDao {
 			 }
 		 }
 	}
-	
+	@Disabled
 	@Test	//게시글 상세내용 보기
 	void ViewArticle() {
 		BoardArticleVO afterBoard;
@@ -93,6 +96,7 @@ class TestListDao {
 			new BoardArticleDAO().createArticle(vo);
 		}
 	}
+	@Disabled
 	 @Test
 	  void test() {
 	    Map<String, String> request = new HashMap<>();

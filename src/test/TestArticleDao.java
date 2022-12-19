@@ -1,3 +1,5 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -7,7 +9,7 @@ import board.article.BoardArticleVO;
 import board.db.DBUtil;
 
 class TestArticleDao {
-	
+	private Logger logger = LogManager.getLogger(LogTest.class);
 	@BeforeAll
 	void beforeAll() {
 		System.setProperty(DBUtil.DB_DIRECT_USED_KEY,"Y");
@@ -19,10 +21,10 @@ class TestArticleDao {
 		BoardArticleVO afterBoard 
 		= BoardArticleDAO.readArticle( Integer.toString(a));
 		
-			System.out.println("작성자: " + afterBoard.getWriter());
-			System.out.println("공개여부: " + afterBoard.getIsPrivate());
-			System.out.println("제목: " + afterBoard.getTitle());
-			System.out.println("내용: " + afterBoard.getContent());
+			logger.info("작성자: " + afterBoard.getWriter());
+			logger.info("공개여부: " + afterBoard.getIsPrivate());
+			logger.info("제목: " + afterBoard.getTitle());
+			logger.info("내용: " + afterBoard.getContent());
 	}
 	
 	@Test
@@ -47,10 +49,10 @@ class TestArticleDao {
 					   vo.setIsPrivate(is_private);
 		dao.createArticle(vo);
 		
-		System.out.println(vo.getWriter());
-		System.out.println(vo.getTitle());
-		System.out.println(vo.getContent());
-		System.out.println(vo.getIsPrivate());
+		logger.info(vo.getWriter());
+		logger.info(vo.getTitle());
+		logger.info(vo.getContent());
+		logger.info(vo.getIsPrivate());
 	}
 	
 	@Test
@@ -75,10 +77,10 @@ class TestArticleDao {
 					   vo.setIsPrivate(is_private);
 		dao.updateArticle(vo);			   
 		
-		System.out.println(vo.getNum());
-		System.out.println(vo.getTitle());
-		System.out.println(vo.getContent());
-		System.out.println(vo.getIsPrivate());
+		logger.info(vo.getNum());
+		logger.info(vo.getTitle());
+		logger.info(vo.getContent());
+		logger.info(vo.getIsPrivate());
 	}
 
 	@Test

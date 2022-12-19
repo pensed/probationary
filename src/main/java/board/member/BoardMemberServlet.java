@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class BoardMemberServlet extends HttpServlet {
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-	private static final long serialVersionUID = 1L;
+public class BoardMemberServlet extends HttpServlet {
 	
+	private Logger logger = LogManager.getLogger(BoardMemberServlet.class);
+	private static final long serialVersionUID = 1L;
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException {

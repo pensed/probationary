@@ -1,7 +1,12 @@
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class TestBoardFilter {
+	
+	private Logger logger = LogManager.getLogger(LogTest.class);
+	
 	@Disabled
 	@Test
 	void filterLoginVerificationFirst() {
@@ -10,9 +15,9 @@ class TestBoardFilter {
 		
 		if(uri.contains("Delete")||uri.contains("Update")) {
 			if(id==null || id.trim().length() <=0) {
-				System.out.println("href=\"/BoardListForm.jsp\"");
+				logger.info("href=\"/BoardListForm.jsp\"");
 			}else {
-				System.out.println(uri);
+				logger.info(uri);
 			}
 		}
 		
@@ -29,11 +34,11 @@ class TestBoardFilter {
 			case "/boardmember":
 			case "/boardregister":
 				if(id==null || id.trim().length() <= 0) {
-					System.out.println("href=\"/BoardListForm.jsp\"");
+					logger.info("href=\"/BoardListForm.jsp\"");
 				} 
 				break;
 			default:
-				System.out.println("chain.doFilter(request, response);");
+				logger.info("chain.doFilter(request, response);");
 				break;
 		}
 	}
