@@ -35,8 +35,10 @@ class TestListDao {
 		
 		
 		 List<BoardListVO> afterBoard;
-		
-		 for(int i=1;i<100;i++) {
+		 int total = 0;
+		 	 total = BoardListDAO.getTotal();
+		 	 
+		 for(int i=0;i<total;i++) {
 			 afterBoard = BoardListDAO.listBoard(i);
 			 assertSame(afterBoard.size(), 10);
 			 Assert.assertNotEquals(i, i);
