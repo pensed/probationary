@@ -20,7 +20,11 @@ public class BoardListDAO {
 			      ResultSet rs = pstmt.executeQuery();
 				){
 			if(rs.next()) {
-				result = (int)(rs.getInt("total")/10+1);
+				if(rs.getInt("total")%10==0) {
+					result = (int)(rs.getInt("total")/10);	
+				} else {
+					result = (int)(rs.getInt("total")/10+1);
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

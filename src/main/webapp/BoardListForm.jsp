@@ -46,20 +46,17 @@
 				<td>
 					<%if(sf.format(dt).compareTo(sf.format(boardList.get(i).getDate()))==0) {
 							out.print("<img src =\"./images/today.png\" style=\"width:30px; height:16px;\" alt=\" \">");
-						}%>
-					<%if(Objects.equals(boardList.get(i).getIs_private(),"Y")) {
-							out.print("<img src =\"./images/lock.png\" style=\"width:12px; height:12px;\" alt=\" \">");
-						}%>
+					}%>
 					<%if (Objects.equals(boardList.get(i).getIs_private(),"Y")){
+						out.print("<img src =\"./images/lock.jpg\" style=\"width:23px; height:17px;\" alt=\" \">");
 						if(!Objects.equals(boardList.get(i).getWriter(),session.getAttribute("id"))&&!Objects.equals(root,session.getAttribute("id"))){ 
 							out.print("<a>");
 						}else { 
-							out.print("<a href=\"BoardArticleForm.jsp?num="+boardList.get(i).getNum()+"\">");
+							out.print("<a href=\"BoardArticleForm.jsp?num="+boardList.get(i).getNum()+"\"style=\"text-decoration: none\">");
 						}
 					  } else {
-							out.print("<a href=\"BoardArticleForm.jsp?num="+boardList.get(i).getNum()+"\">");
+							out.print("<a href=\"BoardArticleForm.jsp?num="+boardList.get(i).getNum()+"\"style=\"text-decoration: none\">");
 					}%>
-						
 						<%=boardList.get(i).getTitle()%>
 						</a></td>
 				<td><%=boardList.get(i).getDate() %></td>

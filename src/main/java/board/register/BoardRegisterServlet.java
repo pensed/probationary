@@ -38,7 +38,6 @@ public class BoardRegisterServlet extends HttpServlet {
 			 				vo.setIsPrivate(isPrivate);
 		   dao.createArticle(vo);
 	    }
-	    System.out.println("BoardArticleVO 보내기 성공");
 	    response.sendRedirect("BoardListForm.jsp");
 	}
 }
