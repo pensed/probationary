@@ -1,16 +1,19 @@
 package board.article;
 
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.io.IOException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import board.db.DBUtil;
+import board.update.BoardUpdateServlet;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import javax.naming.NamingException;
 
 public class BoardArticleDAO {
-	
+	private static Logger logger = LogManager.getLogger(BoardArticleDAO.class);
 	public static String getRoot() {
 		return "admin";
 	}
@@ -28,8 +31,8 @@ public class BoardArticleDAO {
 			rs.close();
 			pstmt.close();
 			con.close();
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException| NamingException| SQLException e) {
+			logger.error("BoardArticleDAO getNexNum Error",e);
 		}
 		return num;
 	}
@@ -58,8 +61,8 @@ public class BoardArticleDAO {
 			pstmt.close();
 			con.close();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException| NamingException| SQLException  e) {
+			logger.error("BoardArticleDAO createArticle Error",e);
 		} 
 	}
 	
@@ -74,8 +77,8 @@ public class BoardArticleDAO {
 			pstmt.close();
 			con.close();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException| NamingException| SQLException  e) {
+			logger.error("BoardArticleDAO addCnt Error",e);
 		}
 	}
 	
@@ -115,8 +118,8 @@ public class BoardArticleDAO {
 			pstmt.close();
 			con.close();
 			addCnt(num);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException| NamingException| SQLException  e) {
+			logger.error("BoardArticleDAO readArticle Error",e);
 		}
 		return vo;
 	}
@@ -146,13 +149,12 @@ public class BoardArticleDAO {
 			pstmt.close();
 			con.close();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException| NamingException| SQLException e) {
+			logger.error("BoardArticleDAO updateArticle Error",e);
 		} 
 	}
 		
 	public static void deleteArticle(String num) {
-		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 			con.setAutoCommit(false);
@@ -167,8 +169,8 @@ public class BoardArticleDAO {
 			pstmt.close();
 			con.close();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (ClassNotFoundException| NamingException| SQLException e) {
+			logger.error("BoardArticleDAO deleteArticle Error",e);
 		} 
 	}
 

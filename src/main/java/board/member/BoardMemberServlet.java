@@ -13,9 +13,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class BoardMemberServlet extends HttpServlet {
-	
-	private Logger logger = LogManager.getLogger(BoardMemberServlet.class);
-	private static final long serialVersionUID = 1L;
+	private static Logger logger = LogManager.getLogger(BoardMemberServlet.class);
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 	throws ServletException, IOException {
@@ -24,16 +22,16 @@ public class BoardMemberServlet extends HttpServlet {
 	
 	private void doHandle(HttpServletRequest request, HttpServletResponse response)
 	throws ServletException, IOException {
+
 		PrintWriter out = response.getWriter();
 		String id = request.getParameter("id");
 		String pwd = request.getParameter("pwd");
-		
 		BoardMemberVO memberVO = new BoardMemberVO();
 		memberVO.setId(id);
 		memberVO.setPwd(pwd);
 		BoardMemberDAO dao = new BoardMemberDAO();
 		boolean result = dao.isExisted(memberVO);
-		
+		logger.info("IS LOGIN: {},{}",result,id);
 		if (result) {		
 			HttpSession session = request.getSession();
 			session.setAttribute("isLogon", true);

@@ -10,7 +10,6 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class DBUtil {
-	public final static String DB_DIRECT_USED_KEY="DB.DIRECT.USED.KEY";
 	final static String DB_URL="jdbc:oracle:thin:@10.89.82.65:1522:DSCPDB";
 	final static String DB_USER="jhyeom";
 	final static String DB_PASS="jhyeom";

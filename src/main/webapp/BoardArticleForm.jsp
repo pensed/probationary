@@ -50,7 +50,11 @@
 					<input type="button" value="수정" onclick="location.href='BoardArticleUpdateForm.jsp?num=<%=num%>'" />
 					<input type="button" value="삭제" onclick="location.href='BoardArticleDeleteForm.jsp?num=<%=num%>'"/>
 				<% } %>
+<<<<<<< HEAD
 				<input type="button" value="뒤로" onclick="location.href='BoardListForm.jsp';"/> 
+=======
+				<input type="button" value="뒤로" onclick="location.href='BoardListForm.jsp';"/>
+>>>>>>> upstream/main
 				<input type="hidden" name="command" value="addBoard" />
 			</form>
 	</body>

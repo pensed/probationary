@@ -9,10 +9,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import board.article.BoardArticleDAO;
 import board.article.BoardArticleVO;
+import board.member.BoardMemberDAO;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BoardUpdateServlet extends HttpServlet {
-	
-	private static final long serialVersionUID = 1L;
+
+
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
