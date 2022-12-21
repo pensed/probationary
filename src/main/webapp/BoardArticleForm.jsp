@@ -33,7 +33,7 @@
 					%>
 					<td>작성자</td>
 					<td><input type="text" name="writer" size="30" value="<%=board.getWriter()%>" readonly> 
-					&nbsp;&nbsp;공개여부&nbsp;<%=board.getIsPrivate() %></td>
+					&nbsp;&nbsp;비공개여부&nbsp;<%=board.getIsPrivate() %></td>
 				</tr>
 				<tr>
 					<td>제목</td>

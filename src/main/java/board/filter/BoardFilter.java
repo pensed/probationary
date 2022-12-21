@@ -28,8 +28,6 @@ public class BoardFilter implements Filter {
 	throws IOException, ServletException {
 		
 		request.setCharacterEncoding("UTF-8");
-		response.setContentType("text/html;charset=utf-8");
-		PrintWriter out = response.getWriter();
 		HttpServletRequest httpRequest   = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
 		
