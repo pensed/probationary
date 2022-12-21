@@ -16,7 +16,6 @@ public class BoardArticleDAO {
 	}
 	public static int getNextNum() {
 		int num = 0;
-//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 			String query = "SELECT max(num)+1 AS num "
@@ -36,7 +35,6 @@ public class BoardArticleDAO {
 	}
 	
 	public void createArticle(BoardArticleVO boardArticleVO) {
-//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
 			
@@ -66,7 +64,6 @@ public class BoardArticleDAO {
 	}
 	
 	public static void addCnt(String num) {
-//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		String query = "UPDATE board SET cnt = cnt+1 WHERE num= ?";
 		try {
 			Connection con = DBUtil.getConnection();
@@ -83,7 +80,6 @@ public class BoardArticleDAO {
 	}
 	
 	public static BoardArticleVO readArticle(String num) {
-//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		List<BoardArticleVO> list = new ArrayList<>();
 		String query = 	"SELECT "
 						+ "writer, "
@@ -92,7 +88,6 @@ public class BoardArticleDAO {
 						+ "is_private "
 					  + "FROM board "
 					  + "WHERE num = ?";
-		//게시글 조회수 추가 쿼리
 		BoardArticleVO vo = new BoardArticleVO();		
 		vo.setNum("-1");
 		vo.setWriter("");
@@ -127,10 +122,9 @@ public class BoardArticleDAO {
 	}
 		
 	public void updateArticle(BoardArticleVO boardArticleVO) {
-//		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
-//			con.setAutoCommit(false);
+			con.setAutoCommit(false);
 			String num 	  		= boardArticleVO.getNum();
 			String title 		= boardArticleVO.getTitle();
 			String content 		= boardArticleVO.getContent();
@@ -161,7 +155,7 @@ public class BoardArticleDAO {
 		System.setProperty(DBUtil.DB_DIRECT_USED_KEY, "Y");
 		try {
 			Connection con = DBUtil.getConnection();
-//			con.setAutoCommit(false);
+			con.setAutoCommit(false);
 			String query = "DELETE FROM board "
 						 + "WHERE num = ? ";
 			
@@ -169,7 +163,6 @@ public class BoardArticleDAO {
 			
 			pstmt.setString(1, num);
 			pstmt.executeUpdate();
-//			con.setAutoCommit(true);
 			
 			pstmt.close();
 			con.close();
