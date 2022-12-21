@@ -8,9 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import board.article.BoardArticleDAO;
 import board.db.DBUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class BoardListDAO {
+	private static Logger logger = LogManager.getLogger(BoardListDAO.class);
 	public static int getTotal() {
 		int result = -1;
 		String query = "SELECT COUNT(*) as total"
@@ -20,14 +24,10 @@ public class BoardListDAO {
 			      ResultSet rs = pstmt.executeQuery();
 				){
 			if(rs.next()) {
-				if(rs.getInt("total")%10==0) {
-					result = (int)(rs.getInt("total")/10);	
-				} else {
-					result = (int)(rs.getInt("total")/10+1);
-				}
+				result = rs.getInt("total");
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("getTotal",e);
 		}
 		return result;
 	}
@@ -84,7 +84,7 @@ public class BoardListDAO {
 			pstmt.close();
 			con.close();
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error("listBoard error",e);
 		}
 		return list;
 	}

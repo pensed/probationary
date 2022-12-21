@@ -63,7 +63,7 @@
 				</tr>
 			</table>
 			<input type="button" value="저장" onclick="fnSendBoard();" /> 
-			<input type="button" value="뒤로" onclick="location.href='http://localhost:8080/BoardListForm.jsp';"/> 
+			<input type="button" value="뒤로" onclick="location.href='BoardListForm.jsp';"/>
 			<input type="hidden" name="command" value="addBoard" />
 		</form>
 	</body>

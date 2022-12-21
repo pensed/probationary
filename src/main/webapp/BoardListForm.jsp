@@ -9,7 +9,12 @@
 	pageNum = "1";
   }
   int currentPage = Integer.parseInt(pageNum);
-  int endPage = BoardListDAO.getTotal();
+  int total  = BoardListDAO.getTotal();
+
+  int endPage = (int)(total / 10);
+  if( (total % 10) != 0 ){
+      endPage += 1;
+  }
   List<BoardListVO> boardList = BoardListDAO.listBoard(currentPage);
   Date dt = new Date();
   SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
@@ -22,15 +27,21 @@
 		<meta charset="UTF-8">
 		<title>게시글 목록</title>
 	</head>
+	<style>
+	    .container{
+	      display: flex;
+	      align-items: center;
+	    }
+	    .container > div {
+	      margin-left: 5px;
+	    }
+	</style>
 	<body>
 		<div class="container">
 			<jsp:include page="Header.jsp"/>
+			<div><input type="button" value="글작성" onclick="location.href='BoardRegisterForm.jsp'"></div>
+			<div>Total: <%=total %></div>
 		</div>
-		<tr>
-			<td colspan="6" align="right">
-				<input type="button" value="글작성" onclick="location.href='BoardRegisterForm.jsp'">
-			</td>
-		</tr>
 		<table board=1>
 			<tr align='center' bgcolor='lightgray'>
 				<th>번호</th>
