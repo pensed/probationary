@@ -20,7 +20,7 @@
 %>
 <script>
 	alert("삭제 완료");
-	location.href="http://localhost:8080/BoardListForm.jsp";
+	location.href="BoardListForm.jsp";
 </script>
 <!DOCTYPE html>
 <html>
