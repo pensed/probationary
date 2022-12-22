@@ -12,6 +12,7 @@ class TestArticleDao {
 	private Logger logger = LogManager.getLogger(LogTest.class);
 	@BeforeAll
 	void beforeAll() {
+		System.setProperty(DBUtil.DB_DIRECT_USED_KEY,"Y");
 	}
 	
 	@AfterEach
